@@ -6,7 +6,7 @@
 
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-.text
+.txt
 
 #.venvs folder
 .venvs/
@@ -867,3 +867,4 @@ venv.bak/
 # mypy
 
 .mypy_cache/
+XSS1-EOS-2018FA.TXT
