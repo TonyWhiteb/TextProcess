@@ -140,23 +140,27 @@ class BtnPanel(wx.Panel):
 
         Open_btn = wx.Button(self,-1,'Open Text File')
         Save_btn = wx.Button(self,-1,'Save as...')
+        self.kw_pnl = wx.TextCtrl(self,-1)
 
         Open_btn.Bind(wx.EVT_LEFT_DOWN, onOpen)
         Save_btn.Bind(wx.EVT_LEFT_DOWN, onSave)
 
         btn_horz = wx.BoxSizer(wx.HORIZONTAL)
-        btn_horz.AddSpacer(10)
+        btn_horz.AddSpacer(5)
+        btn_horz.Add(self.kw_pnl)
+        btn_horz.AddSpacer(5)
         btn_horz.Add(Open_btn)
         btn_horz.AddSpacer(5)
         btn_horz.Add(Save_btn)
         btn_horz.AddSpacer(5)
         
         btn_vert = wx.BoxSizer(wx.VERTICAL)
-        btn_vert.AddStretchSpacer(prop =1)
+        btn_vert.AddStretchSpacer(prop =-1)
         btn_vert.Add(btn_horz, flag = wx.EXPAND)
         btn_vert.AddSpacer(25)
 
         self.SetSizer(btn_vert)
+        self.Centre()
         self.Layout()
 
     
@@ -178,14 +182,14 @@ class MyFrame(wx.Frame):
         self.txt_pnl = MyText(panel,size = (550,300),style=wx.TE_MULTILINE | wx.TE_READONLY)
         self.txt_pnl.HideNativeCaret()
 
-        btn_pnl = BtnPanel(panel, onOpen= self.onOpen, onSave= self.onSave, size = (50,-1))
+        self.btn_pnl = BtnPanel(panel, onOpen= self.onOpen, onSave= self.onSave, size = (300,-1))
 
         box_h = wx.BoxSizer(wx.HORIZONTAL)
         box_v = wx.BoxSizer(wx.VERTICAL)
         box_v.AddSpacer(25)
         box_v.Add(self.txt_pnl,1,wx.EXPAND)
         box_v.AddSpacer(5)
-        box_v.Add(btn_pnl,1,wx.EXPAND)
+        box_v.Add(self.btn_pnl,1,wx.CENTER)
 
         box_h.AddSpacer(20)
         box_h.Add(box_v,-1,wx.EXPAND)
@@ -223,44 +227,93 @@ class MyFrame(wx.Frame):
         print(self.file_name)
         if os.path.exists(self.fullpath):
             self.readFile(self.fullpath)
-            with open(self.fullpath) as f:
-                i = 0
-                self.delimiter = []
-                num_lines = sum(1 for line in open(self.fullpath))
-                for line in f:
-                    rm_space = " ".join(line.split())
-                    line_list = rm_space.split()
-                    if 'Page' in line_list:
-                        self.delimiter.append(i)
-                    i = i+ 1
-                self.delimiter.append(num_lines)
+            # with open(self.fullpath) as f:
+            #     i = 0
+            #     self.delimiter = []
+            #     num_lines = sum(1 for line in open(self.fullpath))
+            #     for line in f:
+            #         rm_space = " ".join(line.split())
+            #         line_list = rm_space.split()
+            #         if 'Page' in line_list:
+            #             self.delimiter.append(i)
+            #         i = i+ 1
+            #     self.delimiter.append(num_lines)
 
+
+    # def delimiter(self):
+    #     with open(self.fullpath) as f:
+    #         i = 0
+    #         self.delimiter = []
+    #         numlines= sum(1 for line in open(self.fullpath))
+    #         for line in f:
+    #             rm_space = " ".join(line.split())
+    #             line_list = rm_space.split()
+    #             if self.keyword in line_list:
+    #                 self.delimiter.append(i)
+    #             i = i + 1
+    #         self.delimiter.append(num_lines)
 
 
 
     def onSave(self,event):
-        dlg = wx.FileDialog(
-            self,message = "Save File As",
-            defaultDir = self.currentDirectory,
-            defaultFile = "", wildcard = wildcard,
-            style = wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT
-        )
-        if dlg.ShowModal() == wx.ID_OK:
-            fullpath = dlg.GetPath()
-            basename = os.path.split(fullpath)
-            file_name = dlg.GetFilename()
-            namelist = file_name.split('.')
-            filename = namelist[0]
-            loop_token = len(self.delimiter)-1
-            for i in range(loop_token):
-                it_start = self.delimiter[i]
-                it_end = self.delimiter[i+1]
-                with open(self.fullpath) as full:
-                    with open((filename + '{0}' +'.'+self.filetype).format(i),'w') as f:
-                        for index, lines in enumerate(islice(full,it_start,it_end)):
-                            f.writelines(lines)
 
-        
+        try:
+            self.keyword = self.btn_pnl.kw_pnl.GetValue()
+            if not self.keyword:
+                raise ValueError('Please enter a delimiter to continue')
+            else:
+                with open(self.fullpath) as f:
+                    print(self.fullpath)
+                    i = 0
+                    self.delimiter = []
+                    num_lines= sum(1 for line in open(self.fullpath))
+                    for line in f:
+                        print(line)
+                        rm_space = " ".join(line.split())
+                        line_list = rm_space.split()
+                        if self.keyword in line_list:
+                            self.delimiter.append(i)
+                        i = i + 1
+                    self.delimiter.append(num_lines)
+                    if len(self.delimiter) == 1:
+                        raise kwException(('{0} is not exist in this text file').format(self.keyword))               
+                
+        except ValueError:
+            self.Warn('Please enter a delimiter to continue')
+        except kwException:
+            self.Warn(('{0} is not exist in this text file').format(self.keyword))
+        else:
+            dlg = wx.FileDialog(
+                self,message = "Save File As",
+                defaultDir = self.currentDirectory,
+                defaultFile = "", wildcard = wildcard,
+                style = wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT
+            )
+            if dlg.ShowModal() == wx.ID_OK:
+                fullpath = dlg.GetPath()
+                basename = os.path.split(fullpath)
+                file_name = dlg.GetFilename()
+                namelist = file_name.split('.')
+                filename = namelist[0]
+                loop_token = len(self.delimiter)-1
+                for i in range(loop_token):
+                    it_start = self.delimiter[i]
+                    it_end = self.delimiter[i+1]
+                    with open(self.fullpath) as full:
+                        with open((filename + '{0}' +'.'+self.filetype).format(i),'w') as f:
+                            for index, lines in enumerate(islice(full,it_start,it_end)):
+                                f.writelines(lines)            
+            
+
+
+    def Warn(self, message, caption = 'Warning!'):
+        dlg = wx.MessageDialog(self, message, caption, wx.OK | wx.ICON_WARNING)
+        dlg.ShowModal()
+        dlg.Destroy()    
+
+class kwException(Exception):
+    pass
+
 
 if __name__ == '__main__':
     app = wx.App(False)
