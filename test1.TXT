@@ -1,57 +1,56 @@
+Report XSS1                                  Dallas County Community College District                                      Page   2
+Date 12/18/2018                               End of Term Student Statistics Summary2
                                                            Term: 2018FA
-Female                                 142         718         273          84
-Unknown
-
-First year                             114         717         326          92
-Second year                             94         383         299          48
-Unclassified                            20          48         137          12
 
 
 
 
 
 
-Part-time                              222         993         739         152
-Full-time                                6         155          23
+Student Profile                 Brookhaven  Cedar Val.   Eastfield   El Centro    Mt. View  North Lake    Richland  District *
 
-In District                            212         975         444         125
-Out of District                          8          15         225           8
-CE or Out of State                       3          68          34           5
-Out of Country                           5          90          59          14
-Unknown
+AGE:
+  15 and below                         279         352         507         538         684         140         320       2,791
+  16 - 20                            3,986       2,984       8,158       5,751       5,325       3,918       7,897      34,969
+  21 - 25                            4,301       1,997       4,191       2,994       3,092       3,911       6,646      22,067
+  26 - 30                            2,206       1,001       1,591       1,519       1,085       1,620       2,666       9,265
+  31 - 35                            1,213         610         879         904         579         849       1,350       5,003
+  36 - 40                              741         410         587         512         401         499         811       3,118
+  41 - 45                              453         288         421         349         230         303         472       1,991
+  46 - 50                              285         221         304         275         169         217         349       1,500
+  51 and over                          670         350         419         305         188         243         641       2,457
+  unable to calculate
 
-Day students                           114         184         433         107
-Night students                          39         124         222
-Day/night students                       8          26          34
-Other/students                          67         814          73          45
+Average Student Age                     27          26          24          24          23          25          25          25
 
-Total credit hours                     942       6,310       3,553         695
-fte @ 15 hours                          63         421         237          46
-fte @ 12 hours                          79         526         296          58
-  Total Academic cr. hr.               924       2,840       1,793         695
-  Academic fte                          62         189         120          46
-    Acad day credit hours              489         881       1,626         447
-    Acad day fte                        33          59         108          30
-    Acad night credit hours            156         390          56
-    Acad night fte                      10          26           4
-    Acad day/night credit hour          66         199          25
-    Acad day/night fte                   4          13           2
-    Acad other credit hours            213       1,370          86         248
-    Acad other fte                      14          91           6          17
-  Total Technical credit hours          18       3,470       1,760
-  Technical fte                          1         231         117
-    Tech day credit hours                3           3         153
-    Tech day fte                         0           0          10
-    Tech night credit hours              3          75       1,091
-    Tech night fte                       0           5          73
-    Tech day/night credit hour                                 267
-    Tech day/night fte                                          18
-    Tech other credit hours             12       3,392         249
-    Tech other fte                       1         226          17
+Contact hours (Academic)         1,367,072     733,440   1,810,672     877,728   1,276,192   1,326,592   2,563,072   9,954,768
+Contact hours (Technical)          446,192     430,944     419,952     889,872     238,224     263,920     333,360   3,022,464
+Total contact hours              1,813,264   1,164,384   2,230,624   1,767,600   1,514,416   1,590,512   2,896,432  12,977,232
 
-Technical/occupational majors                                    3
-Transfer/undecided majors              228       1,147         758         152
+RACE: - Students can choose more than one race cod
+  White                              5,654       2,282       5,942       3,986       3,262       3,843       7,274      27,825
+  Black/African American             2,561       3,787       3,658       3,159       2,603       2,244       4,379      17,963
+  Asian                              1,687         337         975         967         679       2,002       3,380       7,759
+  Native American/Alaskan              395         206         651         506         512         432         544       2,194
+  International                        257          93         386         412         391         262         427       1,786
+  Unknown/Not Reported               3,917       1,690       5,834       4,433       4,560       3,185       5,688      25,530
+  Nat Hawaiian/Pacific Isla             43          15          59          29          18          45          58         103
+
+ETHNICITY:
+   Hispanic/Latino origin            5,928       2,499       8,352       6,664       7,127       4,777       7,524      37,801
+   Non Hispanic/Latino origi         7,283       5,303       7,634       5,685       3,959       6,068      11,720      39,761
+   Unknown/Not Reported                923         411       1,071         798         667         855       1,908       5,599
+
+ENROLLMENT HISTORY::
+  First time any college             2,204       1,560       4,241       3,340       2,858       2,106       4,115      20,424
+  First time DCCCD                   2,967       2,033       4,751       3,859       3,261       2,736       5,068      24,675
+  First time this campus             8,574       5,553      10,475       8,311       7,482       7,052      13,157      60,604
+  Continuing DCCCD                   2,008       1,269       1,696       1,915       1,159       1,413       2,388      11,848
+  Continuing this campus             5,817       3,244       7,380       4,557       5,120       5,214       9,301      40,633
+RETURNING STOP OUTS:
+  Stop out DCCCD                       838         599         842         740         487         561       1,003       5,070
+  Stop out this campus               1,856         765       1,867       1,643       1,371       1,326       2,496      11,324
+
+* NOTE: District totals are unduplicated
   
 
-Report XSS1                                  Dallas County Community College District                                      Page   4
-Date 12/18/2018                               End of Term Student Statistics Summary4

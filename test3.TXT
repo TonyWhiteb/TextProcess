@@ -1,3 +1,10 @@
+Report XSS1                                  Dallas County Community College District                                      Page   4
+Date 12/18/2018                               End of Term Student Statistics Summary4
+                                                           Term: 2018FA
+
+Student Profile                  EFC (494)   ECC (595)   NLC (787)   NLC (797)   RLC (898)
+
+AGE:
   15 and below                           1         221                       1
   16 - 20                              120         675         326         102
   21 - 25                               56         113         211          29

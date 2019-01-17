@@ -14,7 +14,8 @@ class MyPanel(wx.Panel):
         self.delimiter = None
         self.keyword = None
 
-        self.my_text = wx.TextCtrl(self, style=wx.TE_MULTILINE)
+        self.my_text = wx.TextCtrl(self, style=wx.TE_MULTILINE | wx.TE_READONLY)
+        self.my_text.HideNativeCaret()
         open_btn = wx.Button(self, label='Open Text File')
         open_btn.Bind(wx.EVT_BUTTON, self.onOpen)
         save_btn =  wx.Button(self, label ='Split and Save')
@@ -103,12 +104,22 @@ class MyPanel(wx.Panel):
             file_name = dlg.GetFilename()
             namelist = file_name.split('.')
             filename = namelist[0]
-            with open(self.fullpath) as f:
-                for i, lines in enumerate(self.chunks(f,self.delimiter)):
-                    # print(i,lines)
-                    os.chdir(basename[0])
+            loop_token = len(self.delimiter)-1
+            for i in range(loop_token):
+                it_start = self.delimiter[i]
+                it_end = self.delimiter[i+1]
+                with open(self.fullpath) as full:
                     with open((filename + '{0}' +'.'+self.filetype).format(i),'w') as f:
-                        f.writelines(lines)
+                        for index, lines in enumerate(islice(full,it_start,it_end)):
+                            f.writelines(lines)
+
+
+            # with open(self.fullpath) as f:
+            #     for i, lines in enumerate(self.chunks(f,self.delimiter)):
+            #         # print(i,lines)
+            #         os.chdir(basename[0])
+            #         with open((filename + '{0}' +'.'+self.filetype).format(i),'w') as f:
+            #             f.writelines(lines)
                 # for i, lines in enumerate(self.chunks(f,60)):
                 #     with open((filename + '{0}' +'.'+self.filetype).format(i),'w') as fobj:
                 #         fobj.writelines(lines)

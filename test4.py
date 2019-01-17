@@ -1,4 +1,4 @@
-delimiter = [4, 60, 116, 177]
+delimiter = [4, 60, 116, 177, 229]
 import itertools
 # def pairwise(iterable):
 #     it = iter(iterable)

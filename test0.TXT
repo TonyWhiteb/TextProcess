@@ -1,4 +1,5 @@
-
+Report XSS1                                  Dallas County Community College District                                      Page   1
+Date 12/18/2018                               End of Term Student Statistics Summary1
                                                            Term: 2018FA
 
 Student Profile                 Brookhaven  Cedar Val.   Eastfield   El Centro    Mt. View  North Lake    Richland  District *
@@ -53,5 +54,3 @@ Technical/occupational majors            3          34          13          18  
 Transfer/undecided majors           14,123       8,159      17,032      13,119      11,741      11,661      21,138      82,995
   
 
-Report XSS1                                  Dallas County Community College District                                      Page   2
-Date 12/18/2018                               End of Term Student Statistics Summary2
