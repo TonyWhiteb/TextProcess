@@ -124,8 +124,34 @@ class MyPanel(wx.Panel):
                 #     with open((filename + '{0}' +'.'+self.filetype).format(i),'w') as fobj:
                 #         fobj.writelines(lines)
 
+class BtnPanel(wx.Panel):
 
-        pass
+    def __init__(self, parent, id= -1, onOpen = None, onSave = None, size = wx.DefaultSize, style = wx.DEFAULT_FRAME_STYLE):
+
+        super(BtnPanel, self).__init__(parent = parent, id = id, size = size, style = style)
+
+        Open_btn = wx.Button(self,-1,'Open Text File')
+        Save_btn = wx.Button(self,-1,'Save as...')
+
+        Open_btn.Bind(wx.EVT_LEFT_DOWN, onOpen)
+        Save_btn.Bind(wx.EVT_LEFT_DOWN, onSave)
+
+        btn_horz = wx.BoxSizer(wx.HORIZONTAL)
+        btn_horz.AddSpacer(10)
+        btn_horz.Add(Open_btn)
+        btn_horz.AddSpacer(5)
+        btn_horz.Add(Save_btn)
+        btn_horz.AddSpacer(5)
+        
+        btn_vert = wx.BoxSizer(wx.VERTICAL)
+        btn_vert.AddStretchSpacer(prop =1)
+        btn_vert.Add(btn_horz, flag = wx.EXPAND)
+        btn_vert.AddSpacer(25)
+
+        self.SetSizer(btn_vert)
+        self.Layout()
+
+    
 
 
 
